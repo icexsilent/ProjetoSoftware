@@ -3,33 +3,39 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Perfil • Rede+Social</title>
+    <title>Campanhas • Rede+Social</title>
     <link rel="stylesheet" href="/css/style.css">
     <script src="https://unpkg.com/feather-icons"></script>
 </head>
 <body>
-    <div class="header"><div class="logo">Perfil</div></div>
+    <div class="header"><div class="logo">Campanhas</div></div>
 
     <div class="container">
-        <div class="card" style="text-align:center; padding:30px;">
-            <div style="width:100px; height:100px; background:#ddd; border-radius:50%; margin:0 auto 16px; background-image:url('https://via.placeholder.com/150'); background-size:cover;"></div>
-            <h3 th:text="${usuario}">Usuário</h3>
-            <p style="color:#666;">Membro desde 2025</p>
-            <button class="secondary">Editar Perfil</button>
+        <div class="card">
+            <div class="card-header">Campanhas Ativas</div>
+            <div class="card-body" th:each="cand : ${candidatos}">
+                <h4 th:text="${cand.nome}">Candidato</h4>
+                <p th:text="${cand.email}"></p>
+                <button class="secondary" style="margin-top:8px; padding:10px;">Apoiar Candidato</button>
+            </div>
+            <div class="card-body" th:if="${#lists.isEmpty(candidatos)}">
+                <p style="color:#666; text-align:center;">Nenhuma campanha ativa no momento.</p>
+            </div>
         </div>
 
         <div class="card">
-            <div class="card-header">Minhas Contribuições</div>
-            <div class="card-body">
-                <p>Você ainda não fez doações.</p>
+            <div class="card-header">Doações Recentes</div>
+            <div class="card-body" th:each="doa : ${doacoes}">
+                <p><strong>R$ <span th:text="${doa.valor}"></span></strong> • <span th:text="${doa.descricao}"></span></p>
+                <small>Doador: <span th:text="${doa.doadorId}"></span></small>
             </div>
         </div>
     </div>
 
     <div class="bottom-nav">
         <a href="/"><i data-feather="home"></i>Início</a>
-        <a href="/campanhas"><i data-feather="flag"></i>Campanhas</a>
-        <a href="/perfil" class="active"><i data-feather="user"></i>Perfil</a>
+        <a href="/campanhas" class="active"><i data-feather="flag"></i>Campanhas</a>
+        <a th:href="${usuario} ? '/perfil' : '/login'"><i data-feather="user"></i>Perfil</a>
     </div>
 
     <script>feather.replace()</script>
