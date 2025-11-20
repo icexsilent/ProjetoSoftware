@@ -39,7 +39,7 @@
         </div>
 
         <h2>Formulário de Cadastro (Livre)</h2>
-        <form th:action="@{/cadastrar-candidato}" method="post">
+        <form action="/cadastrar-candidato" method="post">
             <input type="text" name="id" placeholder="ID do Candidato" required>
             <input type="text" name="nome" placeholder="Nome" required>
             <input type="email" name="email" placeholder="Email" required>
@@ -55,7 +55,7 @@
         </div>
 
         <h2>Nova Doação</h2>
-        <form th:action="@{/nova-doacao}" method="post">
+        <form action="/nova-doacao" method="post">
             <input type="text" name="doadorId" placeholder="ID do Doador" required>
             <input type="number" name="valor" placeholder="Valor" step="0.01" required>
             <input type="text" name="descricao" placeholder="Descrição" required>
