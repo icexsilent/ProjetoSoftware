@@ -1,52 +1,37 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org">
 <head>
-    <title>Campanhas - Rede Mais Social</title>
     <meta charset="UTF-8">
-    <style> /* Mesmo CSS do dashboard.html para consistência */ </style>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Perfil • Rede+Social</title>
+    <link rel="stylesheet" href="/css/style.css">
+    <script src="https://unpkg.com/feather-icons"></script>
 </head>
 <body>
-    <div class="header">
-        <h1>Campanhas e Eventos</h1>
-        <p th:if="${usuario}">Bem-vindo, <span th:text="${usuario}"></span>!</p>
-        <a href="/">Voltar</a>
-    </div>
+    <div class="header"><div class="logo">Perfil</div></div>
 
-    <div class="feed">
-        <div class="abas">
-            <button onclick="showTab('ativas')">Campanhas Ativas</button>
-            <button onclick="showTab('eventos')">Eventos</button>
+    <div class="container">
+        <div class="card" style="text-align:center; padding:30px;">
+            <div style="width:100px; height:100px; background:#ddd; border-radius:50%; margin:0 auto 16px; background-image:url('https://via.placeholder.com/150'); background-size:cover;"></div>
+            <h3 th:text="${usuario}">Usuário</h3>
+            <p style="color:#666;">Membro desde 2025</p>
+            <button class="secondary">Editar Perfil</button>
         </div>
 
-        <div id="ativas">
-            <h2>Candidatos (Campanhas)</h2>
-            <div th:each="cand : ${candidatos}" class="feed-item">
-                <h4 th:text="${cand.nome}">Nome</h4>
-                <p th:text="'Apoie: ' + ${cand.email}"></p>
-                <button>Apoiar</button> <!-- Futuro: ação de apoio -->
-            </div>
-        </div>
-
-        <div id="eventos" class="hidden">
-            <h2>Doações (Eventos)</h2>
-            <div th:each="doa : ${doacoes}" class="feed-item">
-                <p th:text="'Evento: ' + ${doa.descricao} + ' | Valor: R$ ' + ${doa.valor}"></p>
-                <button>Participar</button>
+        <div class="card">
+            <div class="card-header">Minhas Contribuições</div>
+            <div class="card-body">
+                <p>Você ainda não fez doações.</p>
             </div>
         </div>
     </div>
 
-    <div class="nav-bar">
-        <a href="/">Início</a>
-        <a href="/campanhas">Campanhas</a>
-        <a th:if="${usuario}" href="/perfil">Perfil</a>
+    <div class="bottom-nav">
+        <a href="/"><i data-feather="home"></i>Início</a>
+        <a href="/campanhas"><i data-feather="flag"></i>Campanhas</a>
+        <a href="/perfil" class="active"><i data-feather="user"></i>Perfil</a>
     </div>
 
-    <script>
-        function showTab(tab) {
-            document.getElementById('ativas').classList.toggle('hidden', tab !== 'ativas');
-            document.getElementById('eventos').classList.toggle('hidden', tab !== 'eventos');
-        }
-    </script>
+    <script>feather.replace()</script>
 </body>
 </html>
