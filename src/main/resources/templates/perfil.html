@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Perfil - Rede Mais Social</title>
+    <meta charset="UTF-8">
+    <style> /* Mesmo CSS */ </style>
+</head>
+<body>
+    <div class="header">
+        <h1>Meu Perfil</h1>
+        <a href="/">Voltar</a>
+    </div>
+
+    <div class="feed">
+        <img src="https://via.placeholder.com/150" alt="Foto de Perfil" style="border-radius: 50%; display: block; margin: 0 auto;">
+        <h2 th:text="${usuario}">Usuário</h2>
+        <p>Tipo: Voluntário (futuro: dinâmico)</p>
+        <p>Email: admin@example.com (futuro: do DB)</p>
+        <button>Editar Perfil</button> <!-- Futuro: formulário de edição -->
+        <h3>Minhas Campanhas</h3>
+        <p>Ainda sem itens (expansão futura).</p>
+    </div>
+
+    <div class="nav-bar">
+        <a href="/">Início</a>
+        <a href="/campanhas">Campanhas</a>
+        <a href="/perfil">Perfil</a>
+    </div>
+</body>
+</html>

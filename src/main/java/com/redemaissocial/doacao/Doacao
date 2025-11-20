@@ -1,0 +1,35 @@
+// Doacao.java
+package com.redemaissocial.doacao;
+
+import java.time.LocalDate;
+
+public class Doacao {
+    private Long id;
+    private String doadorId;
+    private String ongId;
+    private double valor; // 0 se for item
+    private String tipo; // "MONETARIA" ou "ITENS"
+    private String descricaoItens;
+    private LocalDate data = LocalDate.now();
+    private String status = "PENDENTE"; // PENDENTE, CONFIRMADA, ENTREGUE
+
+    public Doacao(String doadorId, String ongId, double valor, String tipo, String descricaoItens) {
+        this.doadorId = doadorId;
+        this.ongId = ongId;
+        this.valor = valor;
+        this.tipo = tipo;
+        this.descricaoItens = descricaoItens;
+    }
+
+    public void confirmar() { this.status = "CONFIRMADA"; }
+    public void entregar() { this.status = "ENTREGUE"; }
+
+    @Override
+    public String toString() {
+        if ("MONETARIA".equals(tipo)) {
+            return String.format("Doação R$ %.2f de %s para ONG %s", valor, doadorId, ongId);
+        } else {
+            return String.format("Doação de itens: %s (por %s)", descricaoItens, doadorId);
+        }
+    }
+}

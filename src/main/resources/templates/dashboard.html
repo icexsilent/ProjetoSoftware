@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Dashboard - Rede Mais Social</title>
+    <meta charset="UTF-8">
+    <style>
+        body { font-family: Arial; margin: 0; }
+        .header { background: #f8f9fa; padding: 20px; text-align: center; }
+        .cards { display: flex; gap: 20px; padding: 20px; }
+        .card { background: #e9ecef; padding: 20px; border-radius: 8px; flex: 1; }
+        .feed { padding: 20px; }
+        .feed-item { background: white; margin: 10px 0; padding: 15px; border: 1px solid #ddd; border-radius: 8px; }
+        form { margin: 10px 0; }
+        input, button { padding: 5px; margin: 5px; }
+        button { background: #28a745; color: white; border: none; cursor: pointer; }
+        .nav-bar { position: fixed; bottom: 0; width: 100%; background: #007bff; display: flex; justify-content: space-around; padding: 10px; }
+        .nav-bar a { color: white; text-decoration: none; }
+        .hidden { display: none; }
+    </style>
+</head>
+<body>
+    <div class="header">
+        <h1>Rede Mais Social</h1>
+        <p th:if="${usuario}">Bem-vindo, <span th:text="${usuario}"></span>! <a href="/logout">Sair</a></p>
+        <p th:unless="${usuario}">Acesso Livre - <a href="/login">Entrar</a></p>
+    </div>
+
+    <div class="cards">
+        <div class="card"><h3>Atalhos</h3><a href="/campanhas">Campanhas</a> | Doações</div>
+    </div>
+
+    <div class="feed">
+        <h2>Candidatos (Feed)</h2>
+        <div th:each="cand : ${candidatos}">
+            <div class="feed-item">
+                <h4 th:text="${cand.nome}">Nome</h4>
+                <p th:text="'ID: ' + ${cand.id} + ' | Email: ' + ${cand.email}"></p>
+            </div>
+        </div>
+
+        <h2>Formulário de Cadastro (Livre)</h2>
+        <form th:action="@{/cadastrar-candidato}" method="post">
+            <input type="text" name="id" placeholder="ID do Candidato" required>
+            <input type="text" name="nome" placeholder="Nome" required>
+            <input type="email" name="email" placeholder="Email" required>
+            <input type="text" name="cpf" placeholder="CPF" required>
+            <button type="submit">Cadastrar Candidato</button>
+        </form>
+
+        <h2>Doações Recentes</h2>
+        <div th:each="doa : ${doacoes}">
+            <div class="feed-item">
+                <p th:text="'Valor: R$ ' + ${doa.valor} + ' | Doador: ' + ${doa.doadorId} + ' | Status: ' + ${doa.status}"></p>
+            </div>
+        </div>
+
+        <h2>Nova Doação</h2>
+        <form th:action="@{/nova-doacao}" method="post">
+            <input type="text" name="doadorId" placeholder="ID do Doador" required>
+            <input type="number" name="valor" placeholder="Valor" step="0.01" required>
+            <input type="text" name="descricao" placeholder="Descrição" required>
+            <button type="submit">Registrar Doação</button>
+        </form>
+    </div>
+
+    <div class="nav-bar">
+        <a href="/">Início</a>
+        <a href="/campanhas">Campanhas</a>
+        <a th:if="${usuario}" href="/perfil">Perfil</a>
+        <a th:unless="${usuario}" href="/login">Login</a>
+    </div>
+</body>
+</html>
