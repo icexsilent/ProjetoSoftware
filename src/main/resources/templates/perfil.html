@@ -2,36 +2,30 @@
 <html xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Perfil • Rede+Social</title>
-    <link rel="stylesheet" href="/css/style.css">
-    <script src="https://unpkg.com/feather-icons"></script>
+    <title>Meu Perfil</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet">
+    <style>
+        body { font-family: 'Poppins', sans-serif; background: linear-gradient(135deg,#667eea,#764ba2); min-height:100vh; display:flex; align-items:center; justify-content:center; margin:0; }
+        .card { background:white; padding:70px; border-radius:30px; width:500px; text-align:center; box-shadow:0 30px 80px rgba(0,0,0,0.4); animation:slideUp 1s; }
+        @keyframes slideUp { from{transform:translateY(100px);opacity:0} to{transform:none;opacity:1} }
+        .avatar { width:150px; height:150px; background:linear-gradient(135deg,#667eea,#764ba2); color:white; border-radius:50%; display:flex; align-items:center; justify-content:center; font-size:4em; margin:0 auto 30px; animation:pulse 2s infinite; }
+        @keyframes pulse { 0%{box-shadow:0 0 0 0 rgba(102,126,234,0.7)} 70%{box-shadow:0 0 0 30px rgba(102,126,234,0)} 100%{box-shadow:0 0 0 0 rgba(102,126,234,0)} }
+        h2 { font-size:2.8em; color:#5a67d8; margin-bottom:30px; }
+        p { font-size:1.4em; margin:15px 0; color:#444; }
+        a { display:inline-block; margin:20px; padding:16px 40px; background:#667eea; color:white; border-radius:50px; text-decoration:none; font-weight:bold; }
+        a:hover { background:#5a67d8; transform:scale(1.1); }
+    </style>
 </head>
 <body>
-    <div class="header"><div class="logo">Perfil</div></div>
-
-    <div class="container">
-        <div class="card" style="text-align:center; padding:30px;">
-            <div style="width:100px; height:100px; background:#ddd; border-radius:50%; margin:0 auto 16px; background-image:url('https://via.placeholder.com/150'); background-size:cover;"></div>
-            <h3 th:text="${usuario}">Usuário</h3>
-            <p style="color:#666;">Membro desde 2025</p>
-            <button class="secondary">Editar Perfil</button>
-        </div>
-
-        <div class="card">
-            <div class="card-header">Minhas Contribuições</div>
-            <div class="card-body">
-                <p>Você ainda não fez doações.</p>
-            </div>
-        </div>
-    </div>
-
-    <div class="bottom-nav">
-        <a href="/"><i data-feather="home"></i>Início</a>
-        <a href="/campanhas"><i data-feather="flag"></i>Campanhas</a>
-        <a href="/perfil" class="active"><i data-feather="user"></i>Perfil</a>
-    </div>
-
-    <script>feather.replace()</script>
+<div class="card">
+    <div class="avatar" th:text="${usuario.substring(0,1).toUpperCase()}">U</div>
+    <h2>Meu Perfil</h2>
+    <p><strong>Login:</strong> <span th:text="${usuario}"></span></p>
+    <p><strong>Nome:</strong> <span th:text="${nome}"></span></p>
+    <p><strong>E-mail:</strong> <span th:text="${email}"></span></p>
+    <a href="/">Voltar ao Início</a>
+    <br><br>
+    <a href="/logout" style="background:#e53e3e;">Sair da Conta</a>
+</div>
 </body>
 </html>

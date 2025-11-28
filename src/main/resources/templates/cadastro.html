@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Criar Conta</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet">
+    <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.9.2/dist/confetti.browser.min.js"></script>
+    <style>
+        body { font-family: 'Poppins', sans-serif; background: linear-gradient(135deg,#48bb78,#38a169,#667eea); height:100vh; display:flex; align-items:center; justify-content:center; margin:0; }
+        .card { background:white; padding:60px; border-radius:30px; width:450px; box-shadow:0 30px 80px rgba(0,0,0,0.4); text-align:center; }
+        h1 { background:linear-gradient(90deg,#48bb78,#38a169); -webkit-background-clip:text; -webkit-text-fill-color:transparent; font-size:3em; }
+        input { width:100%; padding:18px; margin:12px 0; border-radius:16px; border:2px solid #eee; font-size:1.1em; }
+        button { width:100%; padding:20px; background:linear-gradient(135deg,#48bb78,#38a169); color:white; border:none; border-radius:16px; font-size:1.4em; cursor:pointer; margin-top:20px; }
+        button:hover { transform:translateY(-8px); box-shadow:0 20px 40px rgba(72,187,120,0.6); }
+        .erro { color:#e53e3e; background:#ffe6e6; padding:15px; border-radius:12px; margin:15px 0; }
+    </style>
+</head>
+<body>
+<div class="card">
+    <h1>CRIAR CONTA</h1>
+    <form action="/cadastrar-usuario" method="post">
+        <input type="text" name="login" placeholder="Login" required>
+        <input type="password" name="senha" placeholder="Senha" required>
+        <input type="text" name="nome" placeholder="Nome completo" required>
+        <input type="email" name="email" placeholder="E-mail" required>
+        <div th:if="${erro}" class="erro" th:text="${erro}"></div>
+        <button type="submit">CRIAR MINHA CONTA</button>
+    </form>
+    <p style="margin-top:25px;">Já tem conta? <a href="/login" style="color:#667eea;font-weight:bold;">Fazer login</a></p>
+</div>
+
+<script>
+    if (window.location.search.includes('sucesso')) {
+        confetti({ particleCount: 300, spread: 100, colors: ['#48bb78','#38a169','#667eea'] });
+    }
+</script>
+</body>
+</html>

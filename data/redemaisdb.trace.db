@@ -1,9 +1,0 @@
-2025-11-20 21:10:52.817374Z jdbc[3]: exception
-org.h2.jdbc.JdbcSQLSyntaxErrorException: Syntax error in SQL statement "INSERT INTO CANDIDATOS VALUES (?, ?, ?, ?) [*]ON DUPLICATE KEY UPDATE nome=VALUES(nome), email=VALUES(email), cpf=VALUES(cpf)"; SQL statement:
-INSERT INTO CANDIDATOS VALUES (?, ?, ?, ?) ON DUPLICATE KEY UPDATE nome=VALUES(nome), email=VALUES(email), cpf=VALUES(cpf) [42000-232]
-2025-11-20 21:22:28.942199Z jdbc[3]: exception
-org.h2.jdbc.JdbcSQLSyntaxErrorException: Syntax error in SQL statement "INSERT INTO CANDIDATOS VALUES (?, ?, ?, ?) [*]ON DUPLICATE KEY UPDATE nome=VALUES(nome), email=VALUES(email), cpf=VALUES(cpf)"; SQL statement:
-INSERT INTO CANDIDATOS VALUES (?, ?, ?, ?) ON DUPLICATE KEY UPDATE nome=VALUES(nome), email=VALUES(email), cpf=VALUES(cpf) [42000-232]
-2025-11-20 21:22:29.776839Z jdbc[3]: exception
-org.h2.jdbc.JdbcSQLSyntaxErrorException: Syntax error in SQL statement "INSERT INTO CANDIDATOS VALUES (?, ?, ?, ?) [*]ON DUPLICATE KEY UPDATE nome=VALUES(nome), email=VALUES(email), cpf=VALUES(cpf)"; SQL statement:
-INSERT INTO CANDIDATOS VALUES (?, ?, ?, ?) ON DUPLICATE KEY UPDATE nome=VALUES(nome), email=VALUES(email), cpf=VALUES(cpf) [42000-232]
